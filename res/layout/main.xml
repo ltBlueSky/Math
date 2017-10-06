@@ -24,8 +24,9 @@
 			android:ems="4"
 			android:layout_width="wrap_content"
 			android:id="@+id/EditTexta"
-			android:text="1"
-			android:inputType="number"/>
+			android:digits="+-*/1234567890s"
+			android:inputType="number"
+			android:hint="0"/>
 
 		<TextView
 			android:layout_height="wrap_content"
@@ -39,8 +40,9 @@
 			android:ems="4"
 			android:layout_width="wrap_content"
 			android:id="@+id/EditTextb"
-			android:text="1"
-			android:inputType="number"/>
+			android:digits="+-*/1234567890s"
+			android:inputType="number"
+			android:hint="0"/>
 
 		<TextView
 			android:layout_height="wrap_content"
@@ -54,8 +56,9 @@
 			android:ems="4"
 			android:layout_width="wrap_content"
 			android:id="@+id/EditTextc"
-			android:text="1"
-			android:inputType="number"/>
+			android:digits="+-*/1234567890s"
+			android:inputType="number"
+			android:hint="0"/>
 
 	</LinearLayout>
 

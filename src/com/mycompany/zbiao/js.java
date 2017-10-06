@@ -13,7 +13,7 @@ public class js
 		if(str.contains("+")==true)
 		{
 			str = str.substring(str.indexOf(""),str.indexOf("+"));
-			str1 = str1.substring(str1.indexOf("+")+1,str1.indexOf("\""));
+			str1 = str1.substring(str1.indexOf("+")+1,str1.indexOf("s"));
 
 			float a = Integer.parseInt(str);
 			float b = Integer.parseInt(str1);
@@ -25,7 +25,7 @@ public class js
 		if(str.contains("-")==true)
 		{
 			str = str.substring(str.indexOf(""),str.indexOf("-"));
-			str1 = str1.substring(str1.indexOf("-")+1,str1.indexOf("\""));
+			str1 = str1.substring(str1.indexOf("-")+1,str1.indexOf("s"));
 
 			float a = Integer.parseInt(str);
 			float b = Integer.parseInt(str1);
@@ -36,7 +36,7 @@ public class js
 		if(str.contains("*")==true)
 		{
 			str = str.substring(str.indexOf(""),str.indexOf("*"));
-			str1 = str1.substring(str1.indexOf("*")+1,str1.indexOf("\""));
+			str1 = str1.substring(str1.indexOf("*")+1,str1.indexOf("s"));
 
 			float a = Integer.parseInt(str);
 			float b = Integer.parseInt(str1);
@@ -47,7 +47,7 @@ public class js
 		if(str.contains("/")==true)
 		{
 			str = str.substring(str.indexOf(""),str.indexOf("/"));
-			str1 = str1.substring(str1.indexOf("/")+1,str1.indexOf("\""));
+			str1 = str1.substring(str1.indexOf("/")+1,str1.indexOf("s"));
 
 			float a = Integer.parseInt(str);
 			float b = Integer.parseInt(str1);
