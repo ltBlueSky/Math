@@ -72,6 +72,11 @@ public class MainActivity extends Activity
 		size = (TextView)findViewById(R.id.size);
 		setsize = (SeekBar)findViewById(R.id.setsize);	
 		
+		//调用画图函数。初始化图像
+		if(baseBitmap == null) 
+			draww();
+		
+		
 		setcolor.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -243,105 +248,63 @@ public class MainActivity extends Activity
 					Log.e("------------", "停止滑动！");
 				}
 			});
-				//调用画图函数。初始化图像
-				draww();
-
+				
 				//把图片展示到ImageView中				
 			iw.setImageBitmap(baseBitmap);						
-		reset.setOnClickListener(new OnClickListener()
+
+			
+			//还原
+			reset.setOnClickListener(new OnClickListener()
 			{
 				@Override
 				public void onClick(View p1)
 				{
-					baseBitmap = Bitmap.createBitmap(1000,													 
-													 1000, Bitmap.Config.ARGB_8888);					
-					width = baseBitmap.getWidth();
-					height = baseBitmap.getHeight();
-					canvas = new Canvas(baseBitmap);
-					canvas.drawColor(Color.WHITE);													
-					//画十字
-					canvas.drawLine(0,width/2,width,width/2,paint);
-					canvas.drawLine(width/2,0,width/2,width,paint);
-					//画y箭头
-					canvas.drawLine(width/2,0,width/2-width/50,width/(width/20),paint);
-					canvas.drawLine(width/2,0,width/2+width/50,width/(width/20),paint);
-					canvas.drawText("y",width/2+(width/50),width/20,Textpaint);
-					//画x箭头
-					canvas.drawLine(width,width/2,width-width/(width/20),width/2-(width/50),paint);
-					canvas.drawLine(width,width/2,width-width/(width/20),width/2+(width/50),paint);
-					canvas.drawText("x",width-(width/40),width/2+width/20,Textpaint);
-					//画x坐标轴
-					//正轴
-					canvas.drawLine(width/5*4+width/10,width/2,width/5*4+width/10,width/2-width/50,spaint);
-					canvas.drawText("4",width/5*4+width/10,width/2+width/20,Textpaint);				
-					canvas.drawLine(width/5*4,width/2,width/5*4,width/2-width/50,spaint);
-					canvas.drawText("3",width/5*4,width/2+width/20,Textpaint);			
-					canvas.drawLine(width/5*4-width/10,width/2,width/5*4-width/10,width/2-width/50,spaint);
-					canvas.drawText("2",width/5*4-width/10,width/2+width/20,Textpaint);	
-					canvas.drawLine(width/5*4-width/5,width/2,width/5*4-width/5,width/2-width/50,spaint);
-					canvas.drawText("1",width/5*4-width/5,width/2+width/20,Textpaint);
-					//负轴
-					canvas.drawLine(width/2/5*4,width/2,width/2/5*4,width/2-width/50,spaint);
-					canvas.drawText("-1",width/2/5*4,width/2+width/20,Textpaint);			
-					canvas.drawLine(width/2/5*4-width/10,width/2,width/2/5*4-width/10,width/2-width/50,spaint);
-					canvas.drawText("-2",width/2/5*4-width/10,width/2+width/20,Textpaint);				
-					canvas.drawLine(width/2/5*4-width/5,width/2,width/2/5*4-width/5,width/2-width/50,spaint);
-					canvas.drawText("-3",width/2/5*4-width/5,width/2+width/20,Textpaint);
-					canvas.drawLine(width/2/5*4-width/10*3,width/2,width/2/5*4-width/10*3,width/2-width/50,spaint);
-					canvas.drawText("-4",width/2/5*4-width/10*3,width/2+width/20,Textpaint);
-					//原点
-					canvas.drawText("0",width/2+width/50,width/2+width/20,Textpaint);
-					//画y坐标轴
-					canvas.drawLine(width/2,width/2/5*4,width/2+width/50,width/2/5*4,spaint);
-					canvas.drawText("1",width/2-width/20,width/2/5*4,Textpaint);
-					canvas.drawLine(width/2,width/2/5*4-width/10,width/2+width/50,width/2/5*4-width/10,spaint);
-					canvas.drawText("2",width/2-width/20,width/2/5*4-width/10,Textpaint);
-					canvas.drawLine(width/2,width/2/5*4-width/5,width/2+width/50,width/2/5*4-width/5,spaint);
-					canvas.drawText("3",width/2-width/20,width/2/5*4-width/5,Textpaint);
-					canvas.drawLine(width/2,width/2/5*4-width/10*3,width/2+width/50,width/2/5*4-width/10*3,spaint);
-					canvas.drawText("4",width/2-width/20,width/2/5*4-width/10*3,Textpaint);	
-					//负轴
-					canvas.drawLine(width/2,width/5*4,width/2+width/50,width/5*4,spaint);
-					canvas.drawText("-1",width/2-width/20,width/5*4-width/5,Textpaint);
-					canvas.drawLine(width/2,width/5*4-width/10,width/2+width/50,width/5*4-width/10,spaint);
-					canvas.drawText("-2",width/2-width/20,width/5*4-width/10,Textpaint);	
-					canvas.drawLine(width/2,width/5*4-width/5,width/2+width/50,width/5*4-width/5,spaint);
-					canvas.drawText("-3",width/2-width/20,width/5*4,Textpaint);
-					canvas.drawLine(width/2,width/2/5*4+width/2,width/2+width/50,width/2/5*4+width/2,spaint);
-					canvas.drawText("-4",width/2-width/20,width/2/5*4+width/2,Textpaint);
-					iw.setImageBitmap(baseBitmap);	
-					// TODO: Implement this method
+					//直接调用函数还原
+					draww();
+				
 					Toast.makeText(MainActivity.this,"已还原",Toast.LENGTH_SHORT).show();
 				}
 			});	
+			
+		//画图
 		drawpicture.setOnClickListener(new OnClickListener(){
 
 				@Override
 				public void onClick(View p1)
-				{		
+				{	
 					//获取字符串
 					String aaa  = EditTexta.getText().toString();
 					String bbb  = EditTextb.getText().toString();
 					String ccc  = EditTextc.getText().toString();
-					if (EditTexta.getText().toString().length() < 1){
-					Toast.makeText(MainActivity.this,"请输入正确的值",Toast.LENGTH_SHORT).show();
+					
+					if(aaa.equals(""))
+						aaa = "0";
+					if(bbb.equals(""))
+						bbb = "0";
+					if(ccc.equals(""))
+						ccc = "0";
+					
+					
+					/*if (EditTexta.getText().toString().length() < 1){
+						aaa = "0";
+						//Toast.makeText(MainActivity.this,"",Toast.LENGTH_SHORT).show();
 					}else{
 					if (EditTextb.getText().toString().length() < 1){
-					Toast.makeText(MainActivity.this,"请输入正确的值",Toast.LENGTH_SHORT).show();
+						bbb = "0";
 					}else{
 					if (EditTextc.getText().toString().length() < 1){
-					Toast.makeText(MainActivity.this,"请输入正确的值",Toast.LENGTH_SHORT).show();
-					}else{
-					//判断字符串中是否含有"。若含有，这调用函数，把他们计算出来
-					if(aaa.contains("\"")==true)
+						ccc = "0";
+					}else{*/
+					//判断字符串中是否含有s。若含有，这调用函数，把他们计算出来
+					if(aaa.contains("s")==true)
 						aa = js.answer(aaa);				
 					else
 						aa = Float.valueOf(aaa);	
-					if(bbb.contains("\"")==true)
+					if(bbb.contains("s")==true)
 					bb = js.answer(bbb);
 					else
 						bb = Float.valueOf(bbb);
-					if(ccc.contains("\"")==true)
+					if(ccc.contains("s")==true)
 						cc = js.answer(ccc);
 					else
 						cc = Float.valueOf(ccc);					
@@ -354,13 +317,9 @@ public class MainActivity extends Activity
 					//把图片展示到ImageView中				
 					iw.setImageBitmap(baseBitmap);	
 				}
-           }
-      }
-}
+           
 				private void zjs()
-				{
-					//首先刷新再画
-					draww();					
+				{					
 					//计算函数并画出来			
 					for (int x=-1000 ; x<=1000 ; x++)
 					{
@@ -374,15 +333,13 @@ public class MainActivity extends Activity
 }
 		public void draww()
 		{
-			if
-			(baseBitmap == null) 
-			{			
 				baseBitmap = Bitmap.createBitmap(1000,													 
 												 1000, Bitmap.Config.ARGB_8888);					
 				width = baseBitmap.getWidth();
 				height = baseBitmap.getHeight();
 				canvas = new Canvas(baseBitmap);
 				canvas.drawColor(Color.WHITE);															
+				
 			//画十字
 			canvas.drawLine(0,width/2,width,width/2,paint);
 			canvas.drawLine(width/2,0,width/2,width,paint);
@@ -433,7 +390,7 @@ public class MainActivity extends Activity
 			canvas.drawText("-3",width/2-width/20,width/5*4,Textpaint);
 			canvas.drawLine(width/2,width/2/5*4+width/2,width/2+width/50,width/2/5*4+width/2,spaint);
 			canvas.drawText("-4",width/2-width/20,width/2/5*4+width/2,Textpaint);		
-		     }
+		   	
 		}
     	@Override
 		public boolean onCreateOptionsMenu(Menu menu)
@@ -464,7 +421,7 @@ public class MainActivity extends Activity
 			{
 				AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 				builder.setTitle("关于");
-				builder.setMessage("由于本人是小白，所以很多地方还没有完善，要是各位有什么好的建议，不妨浪费几分钟把建议留下来。\n\n\t\t\t\t\t\t\t\t\t\t----by：蓝天\n\t\t\t\t\t\t\t\t\t\t\tQQ:1980718886\n\t\t\t\t\t\t\t\t\t\t----by:Lovely boy\n\t\t\t\t\t\t\t\t\t\t\tQQ:3040797627");
+				builder.setMessage("软件很多地方还没有完善，要是各位有什么好的建议，不妨花费几分钟把建议留下来。\n\n\t\t\t\t\t\t\t\t\t\t----by：蓝天\n\t\t\t\t\t\t\t\t\t\t\tQQ:1980718886\n\t\t\t\t\t\t\t\t\t\t----by:Lovely boy\n\t\t\t\t\t\t\t\t\t\t\tQQ:3040797627");
 				builder.setIcon(R.drawable.app);
 				builder.setPositiveButton("联系作者(蓝天)", new DialogInterface.OnClickListener(){
 						@Override
