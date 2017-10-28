@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.kittendev.math.R;
+import android.support.v7.widget.*;
+import android.widget.*;
+import android.graphics.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,17 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_coordinatorLayout);
-
-        Snackbar.make(coordinatorLayout, "点击FAB，不要问我为什么= =", Snackbar.LENGTH_LONG).show();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_floatingActionButton);
-
-        fab.setOnClickListener(new View.OnClickListener() {
+        CardView Math1  = (CardView) findViewById(R.id.Math1);
+        Math1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, QuadraticActivity.class));

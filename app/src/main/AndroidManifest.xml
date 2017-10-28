@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.QuadraticActivity"></activity>
+        <activity android:name=".view.activity.QuadraticActivity"
+			      android:label="二次函数图像">
+	  </activity>
     </application>
 
 </manifest>
