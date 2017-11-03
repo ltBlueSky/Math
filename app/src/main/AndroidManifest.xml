@@ -23,6 +23,12 @@
         <activity android:name=".view.activity.QuadraticActivity"
 			      android:label="二次函数图像">
 	  </activity>
+	    <activity android:name=".view.activity.Math2"
+			android:label="一次函数图像">
+		</activity>
+		<activity android:name=".view.activity.Math3"
+			android:label="反比例函数图像">
+		</activity>
     </application>
 
 </manifest>

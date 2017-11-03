@@ -24,14 +24,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-
-        CardView Math1  = (CardView) findViewById(R.id.Math1);
+		CardView Math3 = (CardView)findViewById(R.id.Math3);
+        CardView Math2 = (CardView)findViewById(R.id.Math2);
+        CardView Math1 = (CardView) findViewById(R.id.Math1);
+		
         Math1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, QuadraticActivity.class));
             }
         });
+		Math2.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+				startActivity(new Intent(MainActivity.this, Math2.class));
+				}
+		});
+		Math3.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+				startActivity(new Intent(MainActivity.this, Math3.class));
+				}
+		});
     }
 
     @Override
