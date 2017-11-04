@@ -15,6 +15,8 @@ import com.kittendev.math.R;
 import android.support.v7.widget.*;
 import android.widget.*;
 import android.graphics.*;
+import com.common.design.*;
+import com.common.design.MaterialDialog.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,11 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    @Override
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
+		
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+			new MaterialDialog.Builder(this)
+				.setTitle("关于")
+				.setMessage("本软件是团队项目，由\nKally\nBlue Sky\nLovely boy\n制作")
+				.setPositiveButton(null)
+				.setNegativeButton(null).show();
+			
+        }
+		return false;
+	 }
 }

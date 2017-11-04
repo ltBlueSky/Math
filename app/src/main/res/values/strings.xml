@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Math</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">关于</string>
 </resources>
