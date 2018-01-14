@@ -12,6 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.kittendev.math.R;
+import android.support.v7.widget.*;
+import android.widget.*;
+import android.graphics.*;
+import com.common.design.*;
+import com.common.design.MaterialDialog.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,31 +24,50 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_coordinatorLayout);
-
-        Snackbar.make(coordinatorLayout, "点击FAB，不要问我为什么= =", Snackbar.LENGTH_LONG).show();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_floatingActionButton);
-
-        fab.setOnClickListener(new View.OnClickListener() {
+		CardView Math3 = (CardView)findViewById(R.id.Math3);
+        CardView Math2 = (CardView)findViewById(R.id.Math2);
+        CardView Math1 = (CardView) findViewById(R.id.Math1);
+		
+        Math1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, QuadraticActivity.class));
             }
         });
+		Math2.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+				startActivity(new Intent(MainActivity.this, Math2.class));
+				}
+		});
+		Math3.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+				startActivity(new Intent(MainActivity.this, Math3.class));
+				}
+		});
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    @Override
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
+		
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+			new MaterialDialog.Builder(this)
+				.setTitle("关于")
+				.setMessage("本软件是团队项目，由\nKally\nBlue Sky\nLovely boy\n制作")
+				.setPositiveButton(null)
+				.setNegativeButton(null).show();
+			
+        }
+		return false;
+	 }
 }
